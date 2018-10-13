@@ -1,0 +1,16 @@
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* .header {
+    width: 100vw;
+    background-color: orange;
+} */
+
+.footer {
+    width: 100vw;
+    background-color: green;
+    height: 80px;
+}
