@@ -12,8 +12,8 @@ const theme = createMuiTheme({
     error: purple,
     type: 'dark',
     contrastThreshold: 3,
-    tonalOffset: 0.2,
-  },
+    tonalOffset: 0.2
+  }
 });
 
 export default theme;

@@ -15,32 +15,32 @@ const styles = {
     // color: '#ff1026',
     color: 'black',
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   vapeIcon: {
     height: 150,
-    width: 'auto',
+    width: 'auto'
   },
   heroCard: {
     width: '400px',
     display: 'flex',
     justifyContent: 'center',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   },
   textPadding: {
     margin: '20px 20px',
-    color: 'black',
+    color: 'black'
   },
   blackText: {
     color: 'black',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   vGodBG: {
-    backgroundImage: 'url("vgod.jpg")',
-  },
+    backgroundImage: 'url("vgod.jpg")'
+  }
 };
 
-const Hero = (props) => {
+const Hero = props => {
   const { classes } = props;
   return (
     <div className={slant.slant}>
@@ -77,18 +77,17 @@ const Hero = (props) => {
             </Typography>
             <Typography className={classes.textPadding} variant="body2">
               Vape mods are the step up from a pen vape - they pack a
-              significantly bigger punch than the smaller pen counterpart.
-              Vape mods come in thousands of different styles, powers, &
-              colors. Vape mods may or may not take an external battery.
-              Generally vape mods consume 18650 high-drain batteries. These
-              types of batteries can be charged either interally in the mod
-              via a USB cable or using an external battery dock-charger. Vape
-              mods also often have adjustable power, meaning you can select
-              the heat/power output of the device, customizing the draw to
-              your liking. Vape mods can also take different types of tank,
-              ranging greatly in variety & features. A vape mod is for the
-              serious vaper, who enjoys customizing the look, feel, &
-              performance of thier device.
+              significantly bigger punch than the smaller pen counterpart. Vape
+              mods come in thousands of different styles, powers, & colors. Vape
+              mods may or may not take an external battery. Generally vape mods
+              consume 18650 high-drain batteries. These types of batteries can
+              be charged either interally in the mod via a USB cable or using an
+              external battery dock-charger. Vape mods also often have
+              adjustable power, meaning you can select the heat/power output of
+              the device, customizing the draw to your liking. Vape mods can
+              also take different types of tank, ranging greatly in variety &
+              features. A vape mod is for the serious vaper, who enjoys
+              customizing the look, feel, & performance of thier device.
             </Typography>
           </div>
         </Grid>
@@ -98,7 +97,7 @@ const Hero = (props) => {
 };
 
 Hero.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.object).isRequired,
+  classes: PropTypes.objectOf(PropTypes.object).isRequired
 };
 
 export default withStyles(styles)(Hero);

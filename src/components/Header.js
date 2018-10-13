@@ -1,22 +1,18 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 
-import logo from "../assets/shadetree.png";
-
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import {withRouter} from 'react-router-dom'
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from "@material-ui/core/Divider";
+import Divider from '@material-ui/core/Divider';
+import logo from '../assets/shadetree.png';
 
 const styles = {
   root: {
@@ -30,16 +26,16 @@ const styles = {
     marginRight: 20
   },
   logo: {
-    width: "25vw",
-    height: "auto",
+    width: '25vw',
+    height: 'auto',
     // margin: 'auto auto',
-    padding: "10px 0px"
+    padding: '10px 0px'
   },
   list: {
     width: 250
   },
   fullList: {
-    width: "auto"
+    width: 'auto'
   },
   bar: {
     width: '85%',
@@ -49,28 +45,15 @@ const styles = {
 
 class Header extends Component {
   state = {
-    top: false,
-    left: false,
-    bottom: false,
-    right: false
+    left: false
   };
 
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.goToHome = this.goToHome.bind(this)
-    this.goToFlavors = this.goToFlavors.bind(this)
-    this.goToContact = this.goToContact.bind(this)
-  }
-
-  goToHome() {
-    this.props.history.push('/')
-  }
-  goToFlavors() {
-    this.props.history.push('/flavors')
-  }
-  goToContact() {
-    this.props.history.push('/contact')
+    this.goToHome = this.goToHome.bind(this);
+    this.goToFlavors = this.goToFlavors.bind(this);
+    this.goToContact = this.goToContact.bind(this);
   }
 
   toggleDrawer = (side, open) => () => {
@@ -79,16 +62,29 @@ class Header extends Component {
     });
   };
 
+  goToHome() {
+    const { history } = this.props;
+    history.push('/');
+  }
+
+  goToFlavors() {
+    const { history } = this.props;
+    history.push('/flavors');
+  }
+
+  goToContact() {
+    const { history } = this.props;
+    history.push('/contact');
+  }
+
   render() {
     const { classes } = this.props;
+    const { left } = this.state;
 
     const navList = (
       <div className={classes.list}>
         <List>
           <ListItem onClick={this.goToHome} button>
-            {/* <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon> */}
             <ListItemText primary="Home" />
           </ListItem>
           <Divider />
@@ -101,17 +97,16 @@ class Header extends Component {
           </ListItem>
         </List>
         <Divider />
-        {/* <List>{otherMailFolderListItems}</List> */}
       </div>
     );
 
     return (
-      <>
+      <div>
         <div className={classes.root}>
           <AppBar position="static">
             <Toolbar className={classes.bar}>
               <IconButton
-                onClick={this.toggleDrawer("left", true)}
+                onClick={this.toggleDrawer('left', true)}
                 className={classes.menuButton}
                 color="inherit"
                 aria-label="Menu"
@@ -121,27 +116,25 @@ class Header extends Component {
               <img alt="logo" src={logo} className={classes.logo} />
             </Toolbar>
           </AppBar>
-          <Drawer
-            open={this.state.left}
-            onClose={this.toggleDrawer("left", false)}
-          >
+          <Drawer open={left} onClose={this.toggleDrawer('left', false)}>
             <div
               tabIndex={0}
               role="button"
-              onClick={this.toggleDrawer("left", false)}
-              onKeyDown={this.toggleDrawer("left", false)}
+              onClick={this.toggleDrawer('left', false)}
+              onKeyDown={this.toggleDrawer('left', false)}
             >
               {navList}
             </div>
           </Drawer>
         </div>
-      </>
+      </div>
     );
   }
 }
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.objectOf(PropTypes.object).isRequired,
+  history: PropTypes.objectOf(PropTypes.object).isRequired
 };
 
 export default withRouter(withStyles(styles)(Header));

@@ -1,18 +1,19 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import TextField from "@material-ui/core/TextField";
-import Divider from "@material-ui/core/Divider";
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Divider from '@material-ui/core/Divider';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   flexContainer: {
-    display: "flex",
-    justifyContent: "space-around",
-    flexWrap: "wrap",
-    height: "calc(100vh - 200px)",
-    width: "80%",
-    margin: "auto",
+    display: 'flex',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    height: 'calc(100vh - 200px)',
+    width: '80%',
+    margin: 'auto',
     backgroundColor: '#313131'
   },
   textField: {
@@ -41,7 +42,7 @@ const styles = theme => ({
   messageField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: "75%"
+    width: '75%'
   },
   headerText: {
     width: '100%',
@@ -50,15 +51,15 @@ const styles = theme => ({
     fontWeight: 'bold'
   },
   input: {
-    color: "black"
+    color: 'black'
   }
 });
 
 class Contact extends React.Component {
   state = {
-    name: "",
-    email: "",
-    message: ""
+    name: '',
+    email: '',
+    message: ''
   };
 
   handleChange = name => event => {
@@ -69,23 +70,28 @@ class Contact extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { name } = this.state;
+    const { email } = this.state;
+    const { message } = this.state;
     return (
       <Paper className={classes.flexContainer} elevation={2}>
-        <Typography className={classes.headerText} variant="display2">Contact Form:</Typography>
+        <Typography className={classes.headerText} variant="display2">
+          Contact Form:
+        </Typography>
         <Divider />
         <TextField
           id="name"
           label="Name"
-          value={this.state.name}
-          onChange={this.handleChange("name")}
+          value={name}
+          onChange={this.handleChange('name')}
           margin="normal"
           className={classes.nameField}
         />
         <TextField
           id="email"
           label="Email"
-          value={this.state.email}
-          onChange={this.handleChange("email")}
+          value={email}
+          onChange={this.handleChange('email')}
           margin="normal"
           className={classes.emailField}
           InputProps={{
@@ -95,8 +101,8 @@ class Contact extends React.Component {
         <TextField
           id="message"
           label="Message"
-          value={this.state.message}
-          onChange={this.handleChange("message")}
+          value={message}
+          onChange={this.handleChange('message')}
           margin="normal"
           multiline
           rowsMax="4"
@@ -106,5 +112,9 @@ class Contact extends React.Component {
     );
   }
 }
+
+Contact.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.object).isRequired
+};
 
 export default withStyles(styles)(Contact);

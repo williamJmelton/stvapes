@@ -1,18 +1,17 @@
-import React from "react";
-import Paper from "@material-ui/core/Paper";
+import React from 'react';
+import Paper from '@material-ui/core/Paper';
 
-import Header from "./Header";
-import Footer from "./Footer";
-
-import { withStyles } from "@material-ui/core";
+import { withStyles } from '@material-ui/core';
+import Header from './Header';
+import Footer from './Footer';
 
 const styles = theme => ({
   root: {
     // ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    width: "90%",
-    margin: "0 auto"
+    width: '90%',
+    margin: '0 auto'
   }
 });
 
